@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} **/
 const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
-  content: ["./src/**/*.{svelte,ts}"],
+  content: ["./src/app.html", "./src/**/*.{svelte,ts}"],
   theme: {
     colors: {
       transparent: "transparent",
