@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Project Solution](https://www.frontendmentor.io/solutions/responsive-and-reactive-landing-page-w-custom-dropdown-menus-CGawEbcTFz)
+- Solution URL: [Project Solution](https://www.frontendmentor.io/solutions/responsive-job-filtering-app-w-sveltekit-tailwindcss-typescript-BFlgGmrwrG)
 - Live Site URL: [Project live site](https://job-listings-with-filtering-seven.vercel.app/)
 
 ## My process
