@@ -9,7 +9,15 @@
 }
 
 @layer components {
-  .bg-main {
-    @apply bg-[url("/images/bg-header-desktop.svg")] bg-no-repeat bg-[length:100%_10.4rem];
+  .card {
+    @apply bg-neutral max-w-screen-lg mx-auto p-6 md:px-12 shadow-lg shadow-primary/20 rounded-md font-bold leading-none;
+  }
+
+  .tag-hover {
+    @apply [@media(hover:hover)]:hover:bg-primary [@media(hover:hover)]:hover:text-neutral-100 transition-colors duration-100;
+  }
+
+  .featured {
+    @apply before:absolute before:top-0 before:left-0 before:bottom-0 before:bg-primary before:w-[5px] before:rounded-l-md;
   }
 }
