@@ -14,7 +14,7 @@
   }
 
   .tag-hover {
-    @apply [@media(hover:hover)]:hover:bg-primary [@media(hover:hover)]:hover:text-neutral-100 transition-colors duration-100;
+    @apply [@media(hover:hover)]:hover:bg-primary [@media(hover:hover)]:hover:text-neutral-100;
   }
 
   .featured {

@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { addFilter, removeFilter } from "../stores/jobs.store";
+  import { addFilter, filters, removeFilter } from "../stores/jobs.store";
   export let label: string;
   export let type: "add" | "remove" | undefined = "add";
+
+  $: disabled = $filters.includes(label);
 </script>
 
 <div class="rounded-sm overflow-hidden flex items-center">
@@ -9,9 +11,10 @@
     on:click={() => type === "add" && addFilter(label)}
     aria-label="Add {label} to filters"
     type="button"
+    {disabled}
     class:cursor-default={type === "remove"}
-    class:tag-hover={type === "add"}
-    class="bg-neutral-200 px-3 py-2 text-primary"
+    class:tag-hover={type === "add" && !disabled}
+    class="bg-neutral-200 px-3 py-2 text-primary transition-colors duration-300"
   >
     {label}
   </button>
@@ -20,7 +23,7 @@
       on:click={() => removeFilter(label)}
       aria-label="Remove {label} from filters"
       type="button"
-      class="bg-primary px-3 self-stretch flex justify-center items-center"
+      class="bg-primary px-3 self-stretch flex justify-center items-center [@media(hover:hover)]:hover:bg-neutral-400 transition-colors duration-300"
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
         ><path

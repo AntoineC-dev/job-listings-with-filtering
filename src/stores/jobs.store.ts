@@ -5,8 +5,16 @@ import type { JobOffer } from "../types";
 export const filters = writable<string[]>([]);
 export const jobs = writable<JobOffer[]>(JOBS);
 
-export const addFilter = (filter: string) => filters.update((prev) => [...prev, filter]);
-export const removeFilter = (filter: string) => filters.update((prev) => prev.filter((item) => item !== filter));
+export const addFilter = (filter: string) =>
+  filters.update((prev) => {
+    if (prev.includes(filter)) return prev;
+    return [...prev, filter];
+  });
+export const removeFilter = (filter: string) =>
+  filters.update((prev) => {
+    if (!prev.includes(filter)) return prev;
+    return prev.filter((item) => item !== filter);
+  });
 export const clearFilters = () => filters.set([]);
 
 filters.subscribe((filters) =>

@@ -3,7 +3,7 @@
   import JobTag from "./JobTag.svelte";
 </script>
 
-<div class="card flex items-center gap-6 justify-between">
+<div class="card flex items-center gap-6 justify-between flex-wrap">
   <div class="flex items-center flex-wrap gap-4">
     {#each $filters as label (label)}
       <JobTag {label} type="remove" />
