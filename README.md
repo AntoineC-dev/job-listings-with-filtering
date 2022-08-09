@@ -1,38 +1,88 @@
-# create-svelte
+# Frontend Mentor - Job listings with filtering solution
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This is a solution to the [Job listings with filtering challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt).
 
-## Creating a project
+## Table of contents
 
-If you're seeing this, you've probably already done this step. Congrats!
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+- [Author](#author)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Overview
 
-# create a new project in my-app
-npm create svelte@latest my-app
+### The challenge
+
+Users should be able to:
+
+- View the optimal layout for the site depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Filter job listings based on the categories
+
+### Screenshot
+
+![Job Listings With Filtering | Fullpage desktop](./fullpage-desktop.png)
+![Job Listings With Filtering | Fullpage mobile](./fullpage-mobile.png)
+
+### Links
+
+- Solution URL: [Project Solution](https://www.frontendmentor.io/solutions/responsive-and-reactive-landing-page-w-custom-dropdown-menus-CGawEbcTFz)
+- Live Site URL: [Project live site](https://job-listings-with-filtering-seven.vercel.app/)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- Flexbox
+- Mobile-first workflow
+- [SvelteKit](https://kit.svelte.dev/) - JS framework
+- [TailwindCss](https://tailwindcss.com/) - Utility-first CSS framework
+- [Typescript](https://www.typescriptlang.org/) - Strongly typed JS
+
+### What I learned
+
+#### Filter function
+
+```js
+jobs.update((_) => {
+  if (filters.length === 0) {
+    return JOBS;
+  } else {
+    return JOBS.filter((job) => {
+      const jobFilters = [job.role, job.level, ...job.languages, ...job.tools];
+      let condition = true;
+      for (let i = 0; i < filters.length; i++) {
+        const filter = filters[i];
+        if (!jobFilters.includes(filter)) {
+          condition = false;
+          break;
+        }
+      }
+      return condition;
+    });
+  }
+});
 ```
 
-## Developing
+#### Toggle a class with Svelte **class:** attributes
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```js
+<button
+  on:click={() => type === "add" && addFilter(label)}
+  aria-label="Add {label} to filters"
+  type="button"
+  class:cursor-default={type === "remove"}
+  class:tag-hover={type === "add"}
+  class="bg-neutral-200 px-3 py-2 text-primary">
+  {label}
+</button>
 ```
 
-## Building
+## Author
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- Frontend Mentor - [@AntoineC-dev](https://www.frontendmentor.io/profile/AntoineC-dev)
